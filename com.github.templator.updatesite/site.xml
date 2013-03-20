@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.github.templator.feature_1.0.1.jar" id="com.github.templator.feature" version="1.0.1"/>
+</site>
