@@ -44,4 +44,21 @@ The other object available in the freemarker context is "helper" variable which 
 
 The output is directed to the name generated from outputFileTemplate which is also freemarker string with the same context as the templateName
 
+Another ability is to provide context to all the classes as "units" variable which is a HashMap of the simple name of the main type in each unit and the unit. In that case the 
+template called once with all the units in the context. In that case, the outputFileTemplate is interpreted as is and not as a freemarker template. To enable this mode
+add a "doAll" variable and set it to true in the .gen file
 
+
+<pre>
+{
+"classNames":[
+"fully.qualified.package.SampleClass1", 
+"fully.qualified.package.SampleClass2", 
+"fully.qualified.package.SampleClass3", 
+"fully.qualified.package.SampleClass4" 
+],
+"templateName":"generate_dot_diagram.ftl",
+"outputFileTemplate":"class_relationship.dot",
+"doAll": "true"
+}
+</pre>
