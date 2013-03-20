@@ -19,16 +19,21 @@ Plugin installs a simple popup menu "Generate From Template" when the user right
 To get started, i recommend keeping your generator files in a generator folder. 
 
 The generator instructions are in a file ending with .gen. The instructions are in JSON format
->{
->"classNames":[
->"fully.qualified.package.SampleClass1", 
->"fully.qualified.package.SampleClass2", 
->"fully.qualified.package.SampleClass3", 
->"fully.qualified.package.SampleClass4" 
->],
->"templateName":"generate_test.ftl",
->"outputFileTemplate":"src/test/java/fully/qualified/package/${unit.types[0].elementName}Test.java"
->}
+
+<pre>
+
+{
+"classNames":[
+"fully.qualified.package.SampleClass1", 
+"fully.qualified.package.SampleClass2", 
+"fully.qualified.package.SampleClass3", 
+"fully.qualified.package.SampleClass4" 
+],
+"templateName":"generate_test.ftl",
+"outputFileTemplate":"src/test/java/fully/qualified/package/${unit.types[0].elementName}Test.java"
+}
+
+</pre>
 
 The classNames provide the context for each invocation of the templateName ( in this case "generate_test.ftl"). This context is provided as "unit" variable in the freemarker 
 template. This variable is an instance of org.eclipse.jdt.core.api.ICompilationUnit [icu].
