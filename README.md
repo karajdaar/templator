@@ -21,7 +21,6 @@ To get started, i recommend keeping your generator files in a generator folder.
 The generator instructions are in a file ending with .gen. The instructions are in JSON format
 
 <pre>
-
 {
 "classNames":[
 "fully.qualified.package.SampleClass1", 
@@ -32,15 +31,14 @@ The generator instructions are in a file ending with .gen. The instructions are 
 "templateName":"generate_test.ftl",
 "outputFileTemplate":"src/test/java/fully/qualified/package/${unit.types[0].elementName}Test.java"
 }
-
 </pre>
 
 The classNames provide the context for each invocation of the templateName ( in this case "generate_test.ftl"). This context is provided as "unit" variable in the freemarker 
-template. This variable is an instance of org.eclipse.jdt.core.api.ICompilationUnit [icu].
+template. This variable is an instance of org.eclipse.jdt.core.api.ICompilationUnit[icu].
 
 [icu]: http://publib.boulder.ibm.com/infocenter/iadthelp/v6r0/index.jsp?topic=/org.eclipse.jdt.doc.isv/reference/api/org/eclipse/jdt/core/ICompilationUnit.html 
 
-The other object available in the freemarker context is "helper" variable which is an instance of Helper [helper] class.
+The other object available in the freemarker context is "helper" variable which is an instance of Helper[helper] class.
 
 [helper]: https://github.com/karajdaar/templator/blob/master/com.github.templator/src/com/github/templator/popup/actions/Helper.java
 
