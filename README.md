@@ -34,13 +34,13 @@ The generator instructions are in a file ending with .gen. The instructions are 
 </pre>
 
 The classNames provide the context for each invocation of the templateName ( in this case "generate_test.ftl"). This context is provided as "unit" variable in the freemarker 
-template. This variable is an instance of org.eclipse.jdt.core.api.ICompilationUnit[icu].
+template. This variable is an instance of [org.eclipse.jdt.core.api.ICompilationUnit].
 
-[icu]: http://publib.boulder.ibm.com/infocenter/iadthelp/v6r0/index.jsp?topic=/org.eclipse.jdt.doc.isv/reference/api/org/eclipse/jdt/core/ICompilationUnit.html 
+[org.eclipse.jdt.core.api.ICompilationUnit]: http://publib.boulder.ibm.com/infocenter/iadthelp/v6r0/index.jsp?topic=/org.eclipse.jdt.doc.isv/reference/api/org/eclipse/jdt/core/ICompilationUnit.html 
 
-The other object available in the freemarker context is "helper" variable which is an instance of Helper[helper] class.
+The other object available in the freemarker context is "helper" variable which is an instance of [Helper] class.
 
-[helper]: https://github.com/karajdaar/templator/blob/master/com.github.templator/src/com/github/templator/popup/actions/Helper.java
+[Helper]: https://github.com/karajdaar/templator/blob/master/com.github.templator/src/com/github/templator/popup/actions/Helper.java
 
 The output is directed to the name generated from outputFileTemplate which is also freemarker string with the same context as the templateName
 
