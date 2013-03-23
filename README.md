@@ -62,3 +62,4 @@ add a "doAll" variable and set it to true in the .gen file
 "doAll": "true"
 }
 </pre>
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/6fd4f2a902f938b153ba3e7463913348 "githalytics.com")](http://githalytics.com/karajdaar/templator)
