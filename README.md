@@ -70,11 +70,12 @@ A sample application borrowing some classes from the PetStore java application. 
 relationship diagram in dot format ([graphviz]). 
 
 Take a look at the generator folder under that project. Once the plugin is installed, you should be able to right click on the 
-generate_graph_relationships.gen and click on Generate From Template. That will create the object_relationships.dot which when 
+[generate_graph_relationships.gen] and click on Generate From Template. That will create the object_relationships.dot which when 
 viewed with [graphviz] looks like this.
 
 ![object_relationships.png](https://raw.github.com/karajdaar/templator/master/sample/generator/object_relationships.png "Class Relationships from sample.domain package using the Generator")
  
+[generate_graph_relationships.gen]: https://github.com/karajdaar/templator/blob/master/sample/generator/generate_graph_relationships.gen
 [graphviz]: http://www.graphviz.org/
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/6fd4f2a902f938b153ba3e7463913348 "githalytics.com")](http://githalytics.com/karajdaar/templator)
