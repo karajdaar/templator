@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.13.2.3.4.6 2002/06/24 19:32:07 inder Exp $                -->
+<!-- =================================================================== -->
+
+<project name="blueprints" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="build.properties"/>
+
+    <property name="petstore.javadocs.dir" value="docs/api"/>
+  </target>
+
+  <target name="core" depends="init">
+    <ant dir="components" target="core"/>
+    <ant dir="waf/src" target="core"/>
+    <ant dir="apps" target="core"/>     
+  </target>
+
+  <target name="deploy" depends="init">
+    <ant dir="apps" target="deploy"/>     
+  </target>
+
+  <target name="verify" depends="init">
+    <ant dir="apps" target="verify"/>     
+  </target>
+
+  <target name="undeploy" depends="init">
+    <ant dir="apps" target="undeploy"/>     
+  </target>
+
+  <target name="docs" depends="init, core">
+    <echo message="Generating API Javadocs...."/>
+    <mkdir dir="${petstore.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${petstore.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Java Pet Store Demo API"
+             doctitle="Java Pet Store Demo"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="components/address/build/classes"/>
+        <pathelement path="components/asyncsender/build/classes"/>
+        <pathelement path="components/cart/build/classes"/>
+        <pathelement path="components/catalog/build/classes"/>
+        <pathelement path="components/contactinfo/build/classes"/>
+        <pathelement path="components/creditcard/build/classes"/>
+        <pathelement path="components/customer/build/classes"/>
+        <pathelement path="components/encodingfilter/build/classes"/>
+        <pathelement path="components/lineitem/build/classes"/>
+        <pathelement path="components/mailer/build/classes"/>
+        <pathelement path="components/processmanager/build/classes"/>
+        <pathelement path="components/purchaseorder/build/classes"/>
+        <pathelement path="components/servicelocator/build/classes"/>
+        <pathelement path="components/signon/build/classes"/>
+        <pathelement path="components/supplierpo/build/classes"/>
+        <pathelement path="components/uidgen/build/classes"/>
+        <pathelement path="components/util/tracer/build/classes"/>
+        <pathelement path="components/xmldocuments/build/classes"/>
+        <pathelement path="waf/build/classes"/>
+        <pathelement path="apps/admin/build/classes"/>
+        <pathelement path="apps/opc/build/classes"/>
+        <pathelement path="apps/petstore/build/classes"/>
+        <pathelement path="apps/supplier/build/classes"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="components/address/src"/>
+        <pathelement path="components/asyncsender/src"/>
+        <pathelement path="components/cart/src"/>
+        <pathelement path="components/catalog/src"/>
+        <pathelement path="components/contactinfo/src"/>
+        <pathelement path="components/creditcard/src"/>
+        <pathelement path="components/customer/src"/>
+        <pathelement path="components/encodingfilter/src"/>
+        <pathelement path="components/lineitem/src"/>
+        <pathelement path="components/mailer/src"/>
+        <pathelement path="components/processmanager/src"/>
+        <pathelement path="components/purchaseorder/src"/>
+        <pathelement path="components/servicelocator/src"/>
+        <pathelement path="components/signon/src"/>
+        <pathelement path="components/supplierpo/src"/>
+        <pathelement path="components/uidgen/src"/>
+        <pathelement path="components/util/tracer/src"/>
+        <pathelement path="components/xmldocuments/src"/>
+        <pathelement path="waf/src"/>
+        <pathelement path="waf/src/controller"/>
+        <pathelement path="waf/src/view/taglibs"/>
+        <pathelement path="waf/src/view/template"/>
+        <pathelement path="apps/admin/src"/>
+        <pathelement path="apps/opc/src"/>
+        <pathelement path="apps/petstore/src"/>
+        <pathelement path="apps/supplier/src"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="clean" depends="init">
+    <ant dir="components" target="clean"/>
+    <ant dir="waf/src" target="clean"/>         
+    <ant dir="apps" target="clean"/>         
+    <delete dir="${petstore.javadocs.dir}"/>
+  </target>
+
+  <target name="all" depends="core, docs"/>
+</project>
